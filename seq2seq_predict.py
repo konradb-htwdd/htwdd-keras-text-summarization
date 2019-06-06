@@ -7,7 +7,7 @@ from pickle import load
 
 latent_dim = 256  # Latent dimensionality of the encoding space.
 
-stories = load(open('C:/Users/Konrad/PycharmProjects/text_summarization/data/hackernoon_tutorial/review_dataset.pkl', 'rb'))
+stories = load(open('./data/hackernoon_tutorial/review_dataset.pkl', 'rb'))
 print('Loaded Stories %d' % len(stories))
 print(type(stories))
 print(stories)
@@ -60,7 +60,7 @@ for i, input_text in enumerate(input_texts):
         encoder_input_data[i, t, input_token_index[char]] = 1.
 
 
-model = load_model('C:/Users/Konrad/PycharmProjects/text_summarization/data/hackernoon_tutorial/model2k.h5')
+model = load_model('./data/hackernoon_tutorial/model.h5')
 
 # Next: inference mode (sampling).
 # Here's the drill:

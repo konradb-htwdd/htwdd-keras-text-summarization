@@ -20,7 +20,7 @@ params = {'batch_size': batch_size,
           'n_channels': 1,
           'shuffle': True}
 
-stories = load(open('C:/Users/Konrad/PycharmProjects/text_summarization/data/hackernoon_tutorial/review_dataset.pkl', 'rb'))
+stories = load(open('./data/hackernoon_tutorial/review_dataset.pkl', 'rb'))
 print('Loaded Stories %d' % len(stories))
 print(type(stories))
 print(stories)
@@ -119,4 +119,4 @@ model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
 model.fit_generator(generator=training_generator, epochs=epochs)
 
 # Save model
-model.save('C:/Users/Konrad/PycharmProjects/text_summarization/data/hackernoon_tutorial/model.h5')
+model.save('./data/hackernoon_tutorial/model.h5')

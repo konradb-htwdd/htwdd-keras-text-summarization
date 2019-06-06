@@ -5,7 +5,9 @@ from nltk.corpus import stopwords
 from pickle import dump, load
 import nltk
 
-reviews = pd.read_csv('data/hackernoon_tutorial/Reviews.csv')
+num_samples = 2000
+
+reviews = pd.read_csv('./data/hackernoon_tutorial/Reviews.csv')
 print(reviews.shape)
 print(reviews.head())
 print(reviews.isnull().sum())
@@ -144,7 +146,7 @@ for summary in reviews.Summary:
     c = c + 1
     if c % 1000 == 0:
         print('Processing summaries [', c, ']')
-    if c % 2000 == 0:
+    if c % num_samples == 0:
         break
 print('Summaries are complete.')
 
@@ -155,7 +157,7 @@ for text in reviews.Text:
     c = c + 1
     if c % 1000 == 0:
         print('Processing texts [', c, ']')
-    if c % 2000 == 0:
+    if c % num_samples == 0:
         break
 print('Texts are complete.')
 
@@ -165,12 +167,12 @@ for i, text in enumerate(clean_texts):
     stories.append({'story': text, 'highlights': clean_summaries[i]})
     stories2.append([text, clean_summaries[i]])
 
-with open('C:/Users/Konrad/PycharmProjects/text_summarization/data/hackernoon_tutorial/review_dataset.csv', 'w', newline='') as writeFile:
+with open('./data/hackernoon_tutorial/review_dataset.csv', 'w', newline='') as writeFile:
     writer = csv.writer(writeFile, delimiter=',', quoting=csv.QUOTE_ALL)
     writer.writerows(stories2)
 
 writeFile.close()
 
-dumpfile = open('C:/Users/Konrad/PycharmProjects/text_summarization/data/hackernoon_tutorial/review_dataset.pkl', 'wb')
+dumpfile = open('./data/hackernoon_tutorial/review_dataset.pkl', 'wb')
 dump(stories, dumpfile)
 dumpfile.close()
